@@ -1,0 +1,399 @@
+/*
+ * Shortlink — dashboard stylesheet
+ * Dark, dependency-free theme. No JavaScript, no web fonts, no framework.
+ */
+
+/* ---------- design tokens ---------- */
+:root {
+  --bg: #0f1420;
+  --bg-raise: #161d2e;
+  --bg-panel: #1a2338;
+  --border: #27314a;
+  --text: #e8edf7;
+  --text-muted: #8a94ab;
+  --accent: #4f8cff;
+  --accent-soft: rgba(79, 140, 255, 0.16);
+  --green: #3ecf8e;
+  --amber: #f5b455;
+  --red: #ef6461;
+  --radius: 10px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---------- reset ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--accent-soft);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+/* ---------- layout ---------- */
+.wrap {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+main.wrap {
+  flex: 1;
+  padding-top: 28px;
+  padding-bottom: 40px;
+}
+
+.topbar {
+  background: var(--bg-raise);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+
+.topbar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.brand::before {
+  content: "⇗ ";
+  color: var(--accent);
+}
+
+.topbar nav {
+  display: flex;
+  gap: 18px;
+}
+
+.topbar nav a {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.topbar nav a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  padding-bottom: 22px;
+  font-size: 13px;
+}
+
+/* ---------- KPI cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-value {
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-label {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- panels & tables ---------- */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px 20px;
+  margin-bottom: 22px;
+  overflow-x: auto;
+}
+
+.panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.panel-head h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 22px;
+}
+
+.grid .panel {
+  margin-bottom: 22px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  text-align: left;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(39, 49, 74, 0.55);
+  vertical-align: top;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: rgba(79, 140, 255, 0.06);
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+th.num {
+  text-align: right;
+}
+
+.ellipsis {
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.code-link {
+  font-family: var(--mono);
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.generated {
+  font-size: 12px;
+  margin-top: -8px;
+}
+
+/* ---------- status badges ---------- */
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge-active {
+  color: var(--green);
+  background: rgba(62, 207, 142, 0.14);
+}
+
+.badge-expired {
+  color: var(--amber);
+  background: rgba(245, 180, 85, 0.14);
+}
+
+.badge-exhausted {
+  color: var(--amber);
+  background: rgba(245, 180, 85, 0.14);
+}
+
+.badge-disabled {
+  color: var(--red);
+  background: rgba(239, 100, 97, 0.14);
+}
+
+/* ---------- bar chart (pure CSS, 11 height levels) ---------- */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 150px;
+  padding-top: 8px;
+}
+
+.bar {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 10px;
+}
+
+.bar-fill {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  background: var(--accent);
+  transition: height 0.2s ease-out;
+}
+
+.lvl-0 { height: 2%; opacity: 0.25; }
+.lvl-1 { height: 10%; }
+.lvl-2 { height: 20%; }
+.lvl-3 { height: 30%; }
+.lvl-4 { height: 40%; }
+.lvl-5 { height: 50%; }
+.lvl-6 { height: 60%; }
+.lvl-7 { height: 70%; }
+.lvl-8 { height: 80%; }
+.lvl-9 { height: 90%; }
+.lvl-10 { height: 100%; background: var(--green); }
+
+.bar-label {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  transform: rotate(-45deg);
+  white-space: nowrap;
+}
+
+/* ---------- error pages ---------- */
+.error-page {
+  max-width: 520px;
+  margin: 8vh auto 0;
+  text-align: center;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 32px;
+}
+
+.error-code {
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.error-page h1 {
+  font-size: 22px;
+  margin: 10px 0 6px;
+}
+
+.error-page .button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 9px 22px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.error-page .button:hover {
+  text-decoration: none;
+  filter: brightness(1.1);
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 640px) {
+  .ellipsis {
+    max-width: 160px;
+  }
+
+  .card-value {
+    font-size: 22px;
+  }
+
+  .bars {
+    height: 110px;
+  }
+
+  .bar-label {
+    display: none;
+  }
+
+  .error-page {
+    margin-top: 4vh;
+  }
+}
+
+/* ---------- scrollbar (WebKit) ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
